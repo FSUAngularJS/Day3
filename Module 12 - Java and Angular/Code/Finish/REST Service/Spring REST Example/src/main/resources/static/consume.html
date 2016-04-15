@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consume Spring REST Service</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script>
+      angular
+        .module('serviceApp', [])
+        .service("consumeRESTService", consumeRESTService)
+        .controller("ConsumeRESTController", ConsumeRESTController);
+
+      function consumeRESTService($http) {
+        this.getResponse = function () {
+          return $http.get("http://localhost:8080/greeting");
+        }
+      }
+
+      function ConsumeRESTController(consumeRESTService) {
+        var vm = this;
+        consumeRESTService.getResponse()
+          .success(function (data) { vm.response = data; })
+          .error(function () { console.log("Failed to Load Data"); });
+      }
+    </script>
+</head>
+<body>
+    <h1>Consume Spring REST Service</h1>
+    <div ng-app="serviceApp">
+        <div ng-controller="ConsumeRESTController as vm">
+          ID = {{vm.response.id}}<br/>
+          Content = {{vm.response.content}}<br/>
+        <div>
+    </div>
+</body>
+</html>

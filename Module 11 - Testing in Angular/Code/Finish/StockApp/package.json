@@ -1,0 +1,19 @@
+{
+  "name": "stockapp",
+  "version": "1.0.0",
+  "description": "Stock App for FSU AngularJS Course",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "test": "karma start karma.conf.js"
+  },
+  "keywords": [
+    "AngularJS"
+  ],
+  "author": "Jeff McBride",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "jasmine-core": "^2.4.1"
+  }
+}
